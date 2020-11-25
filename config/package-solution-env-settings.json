@@ -1,0 +1,30 @@
+{
+  "environments": [
+    {
+      "environment": "default",
+      "id": "2610a199-f448-4ffe-938c-8f9120870d1c",
+      "name": "spfx-react-calendars-client-side-solution",
+      "zip": "solution/spfx-react-calendars.sppkg",
+      "cdn": "<!-- PATH TO CDN -->",
+      "entries": [
+        {
+          "id": "5d9e3f54-f354-469e-9483-2a22ced9c4ce",
+          "location": "./src/webparts/calendars/CalendarsWebPart.manifest.json"
+        }
+      ]
+    },
+    {
+      "environment": "test",
+      "id": "18969783-ae58-4dce-86d5-359ce5dfc3a9",
+      "name": "spfx-react-calendars-client-side-solution-test",
+      "zip": "solution/spfx-react-calendars-test.sppkg",
+      "cdn": "<!-- PATH TO CDN -->",
+      "entries": [
+        {
+          "id": "ce79d83b-b665-4b06-a6af-595893db196a",
+          "location": "./src/webparts/calendars/CalendarsWebPart.manifest.json"
+        }
+      ]
+    }
+  ]
+}
