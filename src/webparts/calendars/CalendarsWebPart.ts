@@ -52,18 +52,14 @@ export default class CalendarsWebPart extends BaseClientSideWebPart<ICalendarsWe
     return {
       pages: [
         {
-          header: {
-            description: strings.PropertyPaneDescription
-          },
           groups: [
             {
-              groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyFieldCollectionData('collectionData', {
-                  key: 'collectionData',
-                  label: 'Collection data',
-                  panelHeader: 'Collection data panel header',
-                  manageBtnLabel: 'Manage collection data',
+                PropertyFieldCollectionData('contentTypes', {
+                  key: 'contentTypes',
+                  label: '',
+                  panelHeader: 'Content Types',
+                  manageBtnLabel: 'Manage Content Types',
                   value: this.properties.contentTypes,
                   fields: [
                     {
@@ -75,7 +71,8 @@ export default class CalendarsWebPart extends BaseClientSideWebPart<ICalendarsWe
                     {
                       id: 'eventColor',
                       title: 'Event Background Color',
-                      type: CustomCollectionFieldType.string
+                      type: CustomCollectionFieldType.string,
+                      required: true
                     }
                   ],
                   disabled: false

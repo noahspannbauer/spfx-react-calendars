@@ -13,6 +13,8 @@
     "lint": "./node_modules/.bin/tslint -p tsconfig.json -c tslint.json 'src/**/*.{ts,tsx}' --fix"
   },
   "dependencies": {
+    "@fullcalendar/daygrid": "^5.4.0",
+    "@fullcalendar/react": "^5.4.0",
     "@microsoft/sp-core-library": "1.11.0",
     "@microsoft/sp-lodash-subset": "1.11.0",
     "@microsoft/sp-office-ui-fabric-core": "1.11.0",
