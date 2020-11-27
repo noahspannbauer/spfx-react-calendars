@@ -1,30 +1,41 @@
 import { IAppContextState } from '../../models/IAppContextState';
 
-export type Action = 
-    | ['SET_INITIAL_CONTENT_TYPES', any[]]
-    | ['SET_SELECTED_CONTENT_TYPES', any[]];
+export type Action =
+  | ['SET_INITIAL_CONTENT_TYPES', any[]]
+  | ['SET_SELECTED_CONTENT_TYPES', any[]]
+  | ['SET_FILTER_PANEL', boolean];
 
 export const initialState: IAppContextState = {
-    initialContentTypes: [],
-    selectedContentTypes: []
+  initialContentTypes: [],
+  selectedContentTypes: [],
+  isFilterPanelOpen: false
 };
 
-export const reducer = (state: any, [type, payload]: Action): IAppContextState => {
-    switch (type) {
-        case 'SET_INITIAL_CONTENT_TYPES': {
-            return {
-                ...state,
-                initialContentTypes: payload
-            }
-        }
-        case 'SET_SELECTED_CONTENT_TYPES': {
-            return {
-                ...state,
-                selectedContentTypes: payload
-            }
-        }
-        default: {
-            return state;
-        }
+export const reducer = (
+  state: any,
+  [type, payload]: Action
+): IAppContextState => {
+  switch (type) {
+    case 'SET_INITIAL_CONTENT_TYPES': {
+      return {
+        ...state,
+        initialContentTypes: payload
+      };
     }
-}
+    case 'SET_SELECTED_CONTENT_TYPES': {
+      return {
+        ...state,
+        selectedContentTypes: payload
+      };
+    }
+    case 'SET_FILTER_PANEL': {
+      return {
+        ...state,
+        isFilterPanelOpen: payload
+      }
+    }
+    default: {
+      return state;
+    }
+  }
+};

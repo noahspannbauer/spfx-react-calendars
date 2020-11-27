@@ -1,0 +1,37 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.filterPanel {
+    ul {
+        padding: 0;
+        list-style-type: none;
+    }
+
+    .grid {
+        @include ms-Grid;
+    }
+    
+    .row {
+        @include ms-Grid-row;
+    }
+    
+    .col {
+        @include ms-Grid-col;
+    }
+    
+    .sm12 {
+        @include ms-sm12;
+    }
+}
+
+:global {
+    .ms-Panel-header {
+        margin-top: 0;
+    }
+
+    .ms-Checkbox {
+        margin-top: 0;
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+}
+

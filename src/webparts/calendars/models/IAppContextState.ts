@@ -1,4 +1,7 @@
+import { IContentType } from './IContentType';
+
 export interface IAppContextState {
-    initialContentTypes: any[];
-    selectedContentTypes: any[];
+  initialContentTypes: IContentType[];
+  selectedContentTypes: string[];
+  isFilterPanelOpen: boolean;
 }

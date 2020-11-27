@@ -1,4 +1,5 @@
 export interface IAppContextProviderProps {
-    contentTypes: any[];
-    children: React.ReactNode;
+  contentTypes: any[];
+  selectedContenTypes: string[];
+  children: React.ReactNode;
 }
