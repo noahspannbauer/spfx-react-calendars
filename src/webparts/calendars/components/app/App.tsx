@@ -5,23 +5,19 @@ import FilterPanel from '../filter/FilterPanel';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 
 const App: React.FC<{}> = () => {
-    const appContext = useAppContext();
+  const appContext = useAppContext();
 
-    const onFilterButtonClick = () => {
-        appContext.setFilterPanel();
-    }
+  const onFilterButtonClick = () => {
+    appContext.setFilterPanel();
+  };
 
-    return (
-        <div>
-            <PrimaryButton
-                onClick={onFilterButtonClick}
-            >
-                Filter
-            </PrimaryButton>
-            <Calendar />
-            <FilterPanel />
-        </div>
-    );
-}
+  return (
+    <div>
+      <PrimaryButton onClick={onFilterButtonClick}>Filter</PrimaryButton>
+      <Calendar />
+      <FilterPanel />
+    </div>
+  );
+};
 
 export default App;

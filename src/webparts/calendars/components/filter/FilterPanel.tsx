@@ -54,26 +54,30 @@ const FilterPanel: React.FC<{}> = () => {
     }
   };
 
-  const onCheckboxChangedHandler = (selectedFilterOptionItem: IFilterOptionItem) => {
-    return (event: React.FormEvent<HTMLElement>, checked: boolean) => {
-        onCheckboxChanged(selectedFilterOptionItem);
-    }
-  }
-
   const onCheckboxChanged = (selectedFilterOptionItem: IFilterOptionItem) => {
-      const selectedFilterOptionItemIndex: number = state.filterOptionItems.map((filterOptionItem: IFilterOptionItem) => {
-          return filterOptionItem.key;
-      }).indexOf(selectedFilterOptionItem.key);
-      const filterOptionItems: IFilterOptionItem[] = state.filterOptionItems;
-      const filterOptionItem = filterOptionItems[selectedFilterOptionItemIndex];
+    const selectedFilterOptionItemIndex: number = state.filterOptionItems
+      .map((filterOptionItem: IFilterOptionItem) => {
+        return filterOptionItem.key;
+      })
+      .indexOf(selectedFilterOptionItem.key);
+    const filterOptionItems: IFilterOptionItem[] = state.filterOptionItems;
+    const filterOptionItem = filterOptionItems[selectedFilterOptionItemIndex];
 
-      filterOptionItem.checked = !selectedFilterOptionItem.checked;
-      
-      dispatch(['SET_FILTER_OPTION_ITEMS', filterOptionItems]);
-  }
+    filterOptionItem.checked = !selectedFilterOptionItem.checked;
+
+    dispatch(['SET_FILTER_OPTION_ITEMS', filterOptionItems]);
+  };
+
+  const onCheckboxChangedHandler = (
+    selectedFilterOptionItem: IFilterOptionItem
+  ) => {
+    return (event: React.FormEvent<HTMLElement>, checked: boolean) => {
+      onCheckboxChanged(selectedFilterOptionItem);
+    };
+  };
 
   const onDismissFilterPanel = () => {
-      appContext.setFilterPanel();
+    appContext.setFilterPanel();
   };
 
   React.useEffect(() => {
@@ -85,7 +89,7 @@ const FilterPanel: React.FC<{}> = () => {
         selectedContentTypes
       );
 
-      console.log()
+      console.log();
 
       dispatch([
         'SET_INITIAL_FILTER_OPTION_ITEMS',
@@ -97,11 +101,9 @@ const FilterPanel: React.FC<{}> = () => {
       ]);
     };
 
-    if (appContext.state.initialContentTypes.length > 0) {
-        getFilterOptionItems();
+    if (appContext.state.initialContentTypes !== undefined && appContext.state.initialContentTypes.length > 0) {
+      getFilterOptionItems();
     }
-
-    
   }, [appContext.state.initialContentTypes]);
 
   return (
@@ -110,33 +112,35 @@ const FilterPanel: React.FC<{}> = () => {
       headerText='Content Types'
       onDismiss={onDismissFilterPanel}
     >
-        <div className={styles.filterPanel}>
-            <div className={styles.grid}>
-                <div className={styles.row}>
-                    <div className={styles.col}>
-                        <ul>
-                            {state.filterOptionItems.map((filterOptionItem: IFilterOptionItem) => {
-                                return (
-                                    <li key={filterOptionItem.key}>
-                                    <Checkbox
-                                        key={filterOptionItem.key}
-                                        label={filterOptionItem.value}
-                                        checked={filterOptionItem.checked}
-                                        onChange={onCheckboxChangedHandler(filterOptionItem)}
-                                    />
-                                    </li>
-                                );
-                            })}
-                        </ul>
-                    </div>
-                </div>
-                <div className={styles.row}>
-                    <div className={styles.col}>
-                        <PrimaryButton>Apply</PrimaryButton>
-                    </div>
-                </div>
+      <div className={styles.filterPanel}>
+        <div className={styles.grid}>
+          <div className={styles.row}>
+            <div className={styles.col}>
+              <ul>
+                {state.filterOptionItems.map(
+                  (filterOptionItem: IFilterOptionItem) => {
+                    return (
+                      <li key={filterOptionItem.key}>
+                        <Checkbox
+                          key={filterOptionItem.key}
+                          label={filterOptionItem.value}
+                          checked={filterOptionItem.checked}
+                          onChange={onCheckboxChangedHandler(filterOptionItem)}
+                        />
+                      </li>
+                    );
+                  }
+                )}
+              </ul>
             </div>
+          </div>
+          <div className={styles.row}>
+            <div className={styles.col}>
+              <PrimaryButton>Apply</PrimaryButton>
+            </div>
+          </div>
         </div>
+      </div>
     </Panel>
   );
 };

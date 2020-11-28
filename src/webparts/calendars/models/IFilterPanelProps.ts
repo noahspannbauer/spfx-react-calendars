@@ -1,4 +1,4 @@
-import { IContentType } from "./IContentType";
+import { IContentType } from './IContentType';
 
 export interface IFilterPanelProps {
   contentTypes: IContentType[];

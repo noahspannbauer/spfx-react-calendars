@@ -1,5 +1,5 @@
 export interface IContentType {
-    uniqueId: string;
-    contentTypeName: string;
-    eventColor: string;
+  uniqueId: string;
+  contentTypeName: string;
+  eventColor: string;
 }

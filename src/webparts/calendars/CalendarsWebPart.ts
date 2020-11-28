@@ -3,22 +3,17 @@ import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import {
   IPropertyPaneConfiguration,
-  PropertyPaneTextField
+  PropertyPaneDropdown
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
-
-import * as strings from 'CalendarsWebPartStrings';
 import Calendars from './components/Calendars';
-import { ICalendarsProps } from './components/ICalendarsProps';
+import { ICalendarsProps } from './models/ICalendarsProps';
 import {
   PropertyFieldCollectionData,
   CustomCollectionFieldType
 } from '@pnp/spfx-property-controls/lib/PropertyFieldCollectionData';
 import { sp } from '@pnp/sp';
-
-export interface ICalendarsWebPartProps {
-  contentTypes: any[];
-}
+import { ICalendarsWebPartProps } from './models/ICalendarsWebPartProps';
 
 export default class CalendarsWebPart extends BaseClientSideWebPart<ICalendarsWebPartProps> {
   protected onInit(): Promise<void> {
@@ -33,7 +28,8 @@ export default class CalendarsWebPart extends BaseClientSideWebPart<ICalendarsWe
     const element: React.ReactElement<ICalendarsProps> = React.createElement(
       Calendars,
       {
-        contentTypes: this.properties.contentTypes
+        contentTypes: this.properties.contentTypes,
+        eventTitleFieldName: this.properties.eventTitleFieldName
       }
     );
 
@@ -75,6 +71,15 @@ export default class CalendarsWebPart extends BaseClientSideWebPart<ICalendarsWe
                       required: true
                     }
                   ],
+                  disabled: false
+                }),
+                PropertyPaneDropdown('eventTitleFieldName', {
+                  label: 'Event Title Field Name',
+                  options: [
+                    { key: 'Title', text: 'Title' },
+                    { key: 'Opponent', text: 'Opponent' }
+                  ],
+                  selectedKey: this.properties.eventTitleFieldName,
                   disabled: false
                 })
               ]

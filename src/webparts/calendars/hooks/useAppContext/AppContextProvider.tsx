@@ -10,10 +10,23 @@ const AppContextProvider: React.FC<IAppContextProviderProps> = (
   const [state, dispatch] = React.useReducer(reducer, initialState);
   const contextValue: IAppContextProps = React.useMemo(() => {
     const contentTypes = props.contentTypes;
-    const selectedContentTypes = props.selectedContenTypes
+    const selectedContentTypes = props.selectedContentTypes;
+    const eventTitleFieldName = props.eventTitleFieldName;
 
-    return { contentTypes, selectedContentTypes, state, dispatch };
-  }, [props.contentTypes, props.selectedContenTypes, state, dispatch]);
+    return {
+      contentTypes,
+      selectedContentTypes,
+      eventTitleFieldName,
+      state,
+      dispatch
+    };
+  }, [
+    props.contentTypes,
+    props.selectedContentTypes,
+    props.eventTitleFieldName,
+    state,
+    dispatch
+  ]);
 
   return (
     <AppContext.Provider value={contextValue}>

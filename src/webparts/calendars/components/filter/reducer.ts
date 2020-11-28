@@ -10,7 +10,7 @@ export type Action =
         isLoading: boolean;
       }
     ]
-    | ['SET_FILTER_OPTION_ITEMS', IFilterOptionItem[]]
+  | ['SET_FILTER_OPTION_ITEMS', IFilterOptionItem[]]
   | ['SET_SELECTED_FILTER_OPTION_ITEMS', string[]];
 
 export const initialState: IFilterPanelState = {
@@ -19,10 +19,7 @@ export const initialState: IFilterPanelState = {
   isLoading: true
 };
 
-export const reducer = (
-  state,
-  [type, payload]: Action
-): IFilterPanelState => {
+export const reducer = (state, [type, payload]: Action): IFilterPanelState => {
   switch (type) {
     case 'SET_INITIAL_FILTER_OPTION_ITEMS': {
       return {
@@ -33,16 +30,16 @@ export const reducer = (
       };
     }
     case 'SET_FILTER_OPTION_ITEMS': {
-        return {
-            ...state,
-            filterOptionItems: payload
-        }
+      return {
+        ...state,
+        filterOptionItems: payload
+      };
     }
     case 'SET_SELECTED_FILTER_OPTION_ITEMS': {
-        return {
-            ...state,
-            selectedFilterOptionItems: payload
-        }
+      return {
+        ...state,
+        selectedFilterOptionItems: payload
+      };
     }
     default: {
       return state;
