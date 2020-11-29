@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { useAppContext } from '../../hooks/useAppContext/UseAppContext';
 import Calendar from '../calendar/Calendar';
-import FilterPanel from '../filter/FilterPanel';
+import FilterPanel from '../filterPanel/FilterPanel';
+import EventModal from '../eventModal/EventModal';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 
 const App: React.FC<{}> = () => {
@@ -16,6 +17,7 @@ const App: React.FC<{}> = () => {
       <PrimaryButton onClick={onFilterButtonClick}>Filter</PrimaryButton>
       <Calendar />
       <FilterPanel />
+      <EventModal />
     </div>
   );
 };

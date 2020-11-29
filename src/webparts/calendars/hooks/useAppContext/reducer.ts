@@ -1,16 +1,21 @@
 import { IAppContextState } from '../../models/IAppContextState';
+import { MSGraphClient } from '@microsoft/sp-http';
 
 export type Action =
   | ['SET_INITIAL_CONTENT_TYPES', any[]]
   | ['SET_SELECTED_CONTENT_TYPES', any[]]
   | ['SET_EVENT_TITLE_FIELD_NAME', string]
-  | ['SET_FILTER_PANEL', boolean];
+  | ['SET_MS_GRAPH_CLIENT', MSGraphClient]
+  | ['SET_FILTER_PANEL', boolean]
+  | ['SET_EVENT_MODAL', boolean];
 
 export const initialState: IAppContextState = {
   initialContentTypes: [],
   selectedContentTypes: [],
   eventTitleFieldName: '',
-  isFilterPanelOpen: false
+  msGraphClient: undefined,
+  isFilterPanelOpen: false,
+  isEventModalOpen: false
 };
 
 export const reducer = (
@@ -36,11 +41,23 @@ export const reducer = (
         eventTitleFieldName: payload
       };
     }
+    case 'SET_MS_GRAPH_CLIENT': {
+      return {
+        ...state,
+        msGraphClient: payload
+      }
+    }
     case 'SET_FILTER_PANEL': {
       return {
         ...state,
         isFilterPanelOpen: payload
       };
+    }
+    case 'SET_EVENT_MODAL': {
+      return {
+        ...state,
+        isEventModalOpen: payload
+      }
     }
     default: {
       return state;

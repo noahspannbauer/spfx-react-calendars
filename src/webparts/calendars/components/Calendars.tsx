@@ -20,6 +20,7 @@ const Calendars: React.FC<ICalendarsProps> = (props: ICalendarsProps) => {
       contentTypes={props.contentTypes}
       selectedContentTypes={selectedContentTypes}
       eventTitleFieldName={props.eventTitleFieldName}
+      msGraphClient={props.msGraphClient}
     >
       <App />
     </AppContextProvider>

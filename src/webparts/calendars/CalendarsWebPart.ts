@@ -14,9 +14,14 @@ import {
 } from '@pnp/spfx-property-controls/lib/PropertyFieldCollectionData';
 import { sp } from '@pnp/sp';
 import { ICalendarsWebPartProps } from './models/ICalendarsWebPartProps';
+import { MSGraphClient } from '@microsoft/sp-http';
 
 export default class CalendarsWebPart extends BaseClientSideWebPart<ICalendarsWebPartProps> {
-  protected onInit(): Promise<void> {
+  private msGraphClient: MSGraphClient;
+
+  protected async onInit(): Promise<void> {
+    this.msGraphClient = await this.context.msGraphClientFactory.getClient();
+
     return super.onInit().then(() => {
       sp.setup({
         spfxContext: this.context
@@ -29,7 +34,8 @@ export default class CalendarsWebPart extends BaseClientSideWebPart<ICalendarsWe
       Calendars,
       {
         contentTypes: this.properties.contentTypes,
-        eventTitleFieldName: this.properties.eventTitleFieldName
+        eventTitleFieldName: this.properties.eventTitleFieldName,
+        msGraphClient: this.msGraphClient
       }
     );
 

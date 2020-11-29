@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { MSGraphClient } from '@microsoft/sp-http';
 import AppContext from './AppContext';
 
 export const useAppContext = () => {
@@ -6,6 +7,7 @@ export const useAppContext = () => {
     contentTypes,
     selectedContentTypes,
     eventTitleFieldName,
+    msGraphClient,
     state,
     dispatch
   } = React.useContext(AppContext);
@@ -30,15 +32,29 @@ export const useAppContext = () => {
     }
   };
 
+  const setEventModal = () => {
+    if (state.isFilterPanelOpen) {
+      dispatch(['SET_EVENT_MODAL', false]);
+    } else {
+      dispatch(['SET_EVENT_MODAL', true]);
+    }    
+  }
+
+  const setMSGraphClient = (msGraphClient: MSGraphClient) => {
+    dispatch(['SET_MS_GRAPH_CLIENT', msGraphClient]);
+  }
+
   React.useMemo(() => {
     setInitialContentTypes(contentTypes);
     setSelectedContentTypes(selectedContentTypes);
     setEventTitleFieldName(eventTitleFieldName);
+    setMSGraphClient(msGraphClient)
   }, []);
 
   return {
     state,
     setSelectedContentTypes,
-    setFilterPanel
+    setFilterPanel,
+    setEventModal
   };
 };

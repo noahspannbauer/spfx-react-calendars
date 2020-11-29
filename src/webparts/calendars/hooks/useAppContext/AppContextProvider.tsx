@@ -12,11 +12,13 @@ const AppContextProvider: React.FC<IAppContextProviderProps> = (
     const contentTypes = props.contentTypes;
     const selectedContentTypes = props.selectedContentTypes;
     const eventTitleFieldName = props.eventTitleFieldName;
+    const msGraphClient = props.msGraphClient
 
     return {
       contentTypes,
       selectedContentTypes,
       eventTitleFieldName,
+      msGraphClient,
       state,
       dispatch
     };
@@ -24,6 +26,7 @@ const AppContextProvider: React.FC<IAppContextProviderProps> = (
     props.contentTypes,
     props.selectedContentTypes,
     props.eventTitleFieldName,
+    props.msGraphClient,
     state,
     dispatch
   ]);

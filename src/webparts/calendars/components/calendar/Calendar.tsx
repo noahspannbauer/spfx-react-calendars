@@ -34,6 +34,11 @@ const Calendar: React.FC<{}> = () => {
     ]);
   };
 
+  const onEventClick = () => {
+    console.log('blah')
+    appContext.setEventModal();
+  }
+
   const getEvents = async (
     contentTypeQueryString: string,
     startDate: string,
@@ -120,8 +125,6 @@ const Calendar: React.FC<{}> = () => {
         }
       }
 
-      console.log(contentTypeQueryString);
-
       dispatch(['SET_CONTENT_TYPES_QUERY_STRING', contentTypeQueryString]);
     };
 
@@ -136,6 +139,7 @@ const Calendar: React.FC<{}> = () => {
       initialView='dayGridMonth'
       events={state.events}
       datesSet={setDateRange}
+      eventClick={onEventClick}
     />
   );
 };
