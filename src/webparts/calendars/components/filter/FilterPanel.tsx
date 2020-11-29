@@ -7,8 +7,8 @@ import { reducer, initialState } from './reducer';
 import { Panel } from 'office-ui-fabric-react/lib/Panel';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { IFilterOptionItem } from '../../models/IFilterOptionItem';
-import { AppContext } from '../../hooks/useAppContext/AppContext';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import AppContext from '../../hooks/useAppContext/AppContext';
 
 const FilterPanel: React.FC<{}> = () => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
@@ -76,6 +76,22 @@ const FilterPanel: React.FC<{}> = () => {
     };
   };
 
+  const onApplyFilter = () => {
+    const selectedFilterOptionItems = [];
+    const selected = state.filterOptionItems.filter((filterOptionItem) => {
+      if (filterOptionItem.checked) {
+        return filterOptionItem;
+      }
+    });
+
+    for (let select of selected) {
+      selectedFilterOptionItems.push(select.key);
+    }
+
+    appContext.setSelectedContentTypes(selectedFilterOptionItems);
+    appContext.setFilterPanel();
+  };
+
   const onDismissFilterPanel = () => {
     appContext.setFilterPanel();
   };
@@ -101,7 +117,10 @@ const FilterPanel: React.FC<{}> = () => {
       ]);
     };
 
-    if (appContext.state.initialContentTypes !== undefined && appContext.state.initialContentTypes.length > 0) {
+    if (
+      appContext.state.initialContentTypes !== undefined &&
+      appContext.state.initialContentTypes.length > 0
+    ) {
       getFilterOptionItems();
     }
   }, [appContext.state.initialContentTypes]);
@@ -136,7 +155,7 @@ const FilterPanel: React.FC<{}> = () => {
           </div>
           <div className={styles.row}>
             <div className={styles.col}>
-              <PrimaryButton>Apply</PrimaryButton>
+              <PrimaryButton onClick={onApplyFilter}>Apply</PrimaryButton>
             </div>
           </div>
         </div>

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { IAppContextProviderProps } from '../../models/IAppContextProviderProps';
 import { IAppContextProps } from '../../models/IAppContextProps';
-import { AppContext } from './AppContext';
 import { reducer, initialState } from './reducer';
+import AppContext from './AppContext';
 
 const AppContextProvider: React.FC<IAppContextProviderProps> = (
   props: IAppContextProviderProps
