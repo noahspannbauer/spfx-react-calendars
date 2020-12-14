@@ -34,10 +34,15 @@ const Calendar: React.FC<{}> = () => {
     ]);
   };
 
-  const onEventClick = () => {
-    console.log('blah')
-    appContext.setEventModal();
-  }
+  const onEventClick = (eventInfo: any) => {
+    appContext.dispatch({
+      type: 'SET_EVENT_MODAL',
+      payload: {
+        eventExtendedProps: eventInfo.event.extendedProps,
+        isEventModalOpen: true
+      }
+    });
+  };
 
   const getEvents = async (
     contentTypeQueryString: string,

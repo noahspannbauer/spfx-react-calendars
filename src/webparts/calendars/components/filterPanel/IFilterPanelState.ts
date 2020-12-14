@@ -1,4 +1,4 @@
-import { IFilterOptionItem } from './IFilterOptionItem';
+import { IFilterOptionItem } from '../../models/IFilterOptionItem';
 
 export interface IFilterPanelState {
   filterOptionItems: IFilterOptionItem[];

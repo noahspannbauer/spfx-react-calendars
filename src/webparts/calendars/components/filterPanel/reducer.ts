@@ -1,5 +1,5 @@
 import { IFilterOptionItem } from '../../models/IFilterOptionItem';
-import { IFilterPanelState } from '../../models/IFilterPanelState';
+import { IFilterPanelState } from './IFilterPanelState';
 
 export type Action =
   | [

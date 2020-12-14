@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IAppContextProviderProps } from '../../models/IAppContextProviderProps';
-import { IAppContextProps } from '../../models/IAppContextProps';
+import { IAppContextProviderProps } from './IAppContextProviderProps';
+import { IAppContextProps } from './IAppContextProps';
 import { reducer, initialState } from './reducer';
 import AppContext from './AppContext';
 
@@ -12,7 +12,7 @@ const AppContextProvider: React.FC<IAppContextProviderProps> = (
     const contentTypes = props.contentTypes;
     const selectedContentTypes = props.selectedContentTypes;
     const eventTitleFieldName = props.eventTitleFieldName;
-    const msGraphClient = props.msGraphClient
+    const msGraphClient = props.msGraphClient;
 
     return {
       contentTypes,

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styles from './Calendars.module.scss';
-import { ICalendarsProps } from '../models/ICalendarsProps';
+import { ICalendarsProps } from './calendar/ICalendarsProps';
 import AppContextProvider from '../hooks/useAppContext/AppContextProvider';
 import App from './app/App';
 

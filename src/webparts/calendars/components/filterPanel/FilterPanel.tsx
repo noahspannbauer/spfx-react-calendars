@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styles from './FilterPanel.module.scss';
-import { IFilterPanelProps } from '../../models/IFilterPanelProps';
+import { IFilterPanelProps } from './IFilterPanelProps';
 import { IContentType } from '../../models/IContentType';
 import { useAppContext } from '../../hooks/useAppContext/UseAppContext';
 import { reducer, initialState } from './reducer';
@@ -88,12 +88,17 @@ const FilterPanel: React.FC<{}> = () => {
       selectedFilterOptionItems.push(select.key);
     }
 
-    appContext.setSelectedContentTypes(selectedFilterOptionItems);
-    appContext.setFilterPanel();
+    appContext.dispatch({
+      type: 'APPLY_FILTER',
+      payload: {
+        selectedContentTypes: selectedFilterOptionItems,
+        isFilterPanelOpen: false
+      }
+    });
   };
 
   const onDismissFilterPanel = () => {
-    appContext.setFilterPanel();
+    appContext.dispatch({ type: 'SET_FILTER_PANEL', payload: false });
   };
 
   React.useEffect(() => {
@@ -104,8 +109,6 @@ const FilterPanel: React.FC<{}> = () => {
         appContext.state.initialContentTypes,
         selectedContentTypes
       );
-
-      console.log();
 
       dispatch([
         'SET_INITIAL_FILTER_OPTION_ITEMS',

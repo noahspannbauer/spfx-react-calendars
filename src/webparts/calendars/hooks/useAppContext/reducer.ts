@@ -1,63 +1,87 @@
-import { IAppContextState } from '../../models/IAppContextState';
+import { IAppContextState } from './IAppContextState';
 import { MSGraphClient } from '@microsoft/sp-http';
-
-export type Action =
-  | ['SET_INITIAL_CONTENT_TYPES', any[]]
-  | ['SET_SELECTED_CONTENT_TYPES', any[]]
-  | ['SET_EVENT_TITLE_FIELD_NAME', string]
-  | ['SET_MS_GRAPH_CLIENT', MSGraphClient]
-  | ['SET_FILTER_PANEL', boolean]
-  | ['SET_EVENT_MODAL', boolean];
+import { IEventExtendedProps } from '../../models/IEventExtendedProps';
 
 export const initialState: IAppContextState = {
   initialContentTypes: [],
   selectedContentTypes: [],
   eventTitleFieldName: '',
   msGraphClient: undefined,
-  isFilterPanelOpen: false,
-  isEventModalOpen: false
+  eventExtendedProps: null,
+  isEventModalOpen: false,
+  isFilterPanelOpen: false
 };
 
+export type Action =
+  | {
+      type: 'INITIAL_LOAD';
+      payload: {
+        initialContentTypes: any[];
+        selectedContentTypes: any[];
+        eventTitleFieldName: string;
+        msGraphClient: MSGraphClient;
+      };
+    }
+  | { type: 'SET_SELECTED_CONTENT_TYPES'; payload: any[] }
+  | { type: 'SET_EVENT_TITLE_FIELD_NAME'; payload: string }
+  | { type: 'SET_MS_GRAPH_CLIENT'; payload: MSGraphClient }
+  | {
+      type: 'SET_EVENT_MODAL';
+      payload: {
+        eventExtendedProps: IEventExtendedProps;
+        isEventModalOpen: boolean;
+      };
+    }
+  | {
+      type: 'APPLY_FILTER';
+      payload: { selectedContentTypes: any[]; isFilterPanelOpen: boolean };
+    }
+  | { type: 'SET_FILTER_PANEL'; payload: boolean };
+
 export const reducer = (
-  state: any,
-  [type, payload]: Action
+  state: IAppContextState,
+  action: Action
 ): IAppContextState => {
-  switch (type) {
-    case 'SET_INITIAL_CONTENT_TYPES': {
+  switch (action.type) {
+    case 'INITIAL_LOAD': {
       return {
         ...state,
-        initialContentTypes: payload
+        initialContentTypes: action.payload['initialContentTypes'],
+        selectedContentTypes: action.payload['selectedContentTypes'],
+        eventTitleFieldName: action.payload['eventTitleFieldName'],
+        msGraphClient: action.payload['msGraphClient']
       };
     }
     case 'SET_SELECTED_CONTENT_TYPES': {
       return {
         ...state,
-        selectedContentTypes: payload
+        selectedContentTypes: action.payload
       };
     }
     case 'SET_EVENT_TITLE_FIELD_NAME': {
       return {
         ...state,
-        eventTitleFieldName: payload
+        eventTitleFieldName: action.payload
       };
     }
     case 'SET_MS_GRAPH_CLIENT': {
       return {
         ...state,
-        msGraphClient: payload
-      }
-    }
-    case 'SET_FILTER_PANEL': {
-      return {
-        ...state,
-        isFilterPanelOpen: payload
+        msGraphClient: action.payload
       };
     }
     case 'SET_EVENT_MODAL': {
       return {
         ...state,
-        isEventModalOpen: payload
-      }
+        eventExtendedProps: action.payload['eventExtendedProps'],
+        isEventModalOpen: action.payload['isEventModalOpen']
+      };
+    }
+    case 'SET_FILTER_PANEL': {
+      return {
+        ...state,
+        isFilterPanelOpen: action.payload
+      };
     }
     default: {
       return state;

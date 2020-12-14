@@ -1,6 +1,6 @@
-import { IAppContextState } from '../models/IAppContextState';
+import { IAppContextState } from './IAppContextState';
 import { MSGraphClient } from '@microsoft/sp-http';
-import { Action } from '../hooks/useAppContext/reducer';
+import { Action } from './reducer';
 
 export interface IAppContextProps {
   contentTypes: any[];

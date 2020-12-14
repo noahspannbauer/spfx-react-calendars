@@ -7,13 +7,13 @@ import {
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import Calendars from './components/Calendars';
-import { ICalendarsProps } from './models/ICalendarsProps';
+import { ICalendarsProps } from './components/calendar/ICalendarsProps';
 import {
   PropertyFieldCollectionData,
   CustomCollectionFieldType
 } from '@pnp/spfx-property-controls/lib/PropertyFieldCollectionData';
 import { sp } from '@pnp/sp';
-import { ICalendarsWebPartProps } from './models/ICalendarsWebPartProps';
+import { ICalendarsWebPartProps } from './ICalendarsWebPartProps';
 import { MSGraphClient } from '@microsoft/sp-http';
 
 export default class CalendarsWebPart extends BaseClientSideWebPart<ICalendarsWebPartProps> {

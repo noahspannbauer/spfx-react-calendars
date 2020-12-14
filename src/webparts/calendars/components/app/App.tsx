@@ -9,7 +9,7 @@ const App: React.FC<{}> = () => {
   const appContext = useAppContext();
 
   const onFilterButtonClick = () => {
-    appContext.setFilterPanel();
+    appContext.dispatch({ type: 'SET_FILTER_PANEL', payload: true });
   };
 
   return (

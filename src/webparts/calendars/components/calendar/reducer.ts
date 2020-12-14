@@ -1,4 +1,4 @@
-import { ICalendarState } from '../../models/ICalendarState';
+import { ICalendarState } from './ICalendarState';
 
 export type Action =
   | ['SET_EVENTS', any[]]
