@@ -1,0 +1,37 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.filterPanel {
+    margin-top: 10px;
+    
+    .grid {
+        @include ms-Grid;
+    }
+
+    .row {
+        @include ms-Grid-row;
+    }
+
+    .col {
+        @include ms-Grid-col;
+    }
+
+    .sm4 {
+        @include ms-sm4;
+    }
+
+    .sm8 {
+        @include ms-sm8;
+    }
+
+    .sm12 {
+        @include ms-sm12;
+    }
+
+    .filterRow {
+        margin-bottom: 5px;
+    }
+
+    .favoritesButton {
+        margin-top: 10px;
+    }
+}

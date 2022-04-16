@@ -1,0 +1,55 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.calendar {
+    .grid {
+        @include ms-Grid;
+    }
+
+    .row {
+        @include ms-Grid-row;
+    }
+
+    .col {
+        @include ms-Grid-col;
+    }
+
+    .sm1 {
+        @include ms-sm1;
+    }
+
+    .sm3 {
+        @include ms-sm3;
+    }
+
+    .sm4 {
+        @include ms-sm4;
+    }
+
+    .sm6 {
+        @include ms-sm6;
+    }
+
+    .sm8 {
+        @include ms-sm8;
+    }
+
+    .sm9 {
+        @include ms-sm9;
+    }
+
+    .sm10 {
+        @include ms-sm10;
+    }
+
+    .sm11 {
+        @include ms-sm11;
+    }
+
+    .sm12 {
+        @include ms-sm12;
+    }
+
+    .eventPanelValue {
+        padding: 5px 0px;
+    }
+}

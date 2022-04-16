@@ -1,0 +1,57 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.settingsPanel {
+    margin-top: 10px;
+    
+    .grid {
+        @include ms-Grid;
+    }
+
+    .row {
+        @include ms-Grid-row;
+    }
+
+    .col {
+        @include ms-Grid-col;
+    }
+
+    .sm2 {
+        @include ms-sm2
+    }
+
+    .sm4 {
+        @include ms-sm4;
+    }
+
+    .sm6 {
+        @include ms-sm6;
+    }
+
+    .sm8 {
+        @include ms-sm8;
+    }
+
+    .sm10 {
+        @include ms-sm10
+    }
+
+    .sm12 {
+        @include ms-sm12;
+    }
+
+    .settingsRow {
+        margin-bottom: 5px;
+    }
+
+    .textAlignRight {
+        text-align: right;
+    }
+
+    .marginTop {
+        margin-top: 8px;
+    }
+
+    .marginBottom {
+        margin-bottom: 15px;
+    }
+}
